@@ -14,12 +14,12 @@ public class AccommodationDTO {
 
     private String accommodationAddress;    // 숙소 위치
 
-    private int grade;                      // 평점
+    private double grade;                      // 평점
 
     public AccommodationDTO() {
     }
 
-    public AccommodationDTO(int accommodationCode, String accommodationName, int accommodationPrice, int eventPrice, int discountRate, String accommodationAddress, int grade) {
+    public AccommodationDTO(int accommodationCode, String accommodationName, int accommodationPrice, int eventPrice, int discountRate, String accommodationAddress, double grade) {
         this.accommodationCode = accommodationCode;
         this.accommodationName = accommodationName;
         this.accommodationPrice = accommodationPrice;
@@ -61,11 +61,11 @@ public class AccommodationDTO {
         this.accommodationAddress = accommodationAddress;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

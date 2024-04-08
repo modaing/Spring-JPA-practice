@@ -14,7 +14,7 @@ public class ReservationDTO {
 
     private int accommodationCode;      // 숙소 코드
 
-    private Date reservationDate;       // 예약한 날짜
+    private Date reservationDate;       // 예약 날짜
 
     public ReservationDTO() {
     }

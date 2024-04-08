@@ -27,11 +27,11 @@ public class Accommodation {
     private String accommodationAddress;
 
     @Column(name = "grade")
-    private int grade;
+    private double grade;
 
     protected Accommodation() {}
 
-    public Accommodation(int accommodationCode, String accommodationName, int accommodationPrice, int eventPrice, int discountRate, String accommodationAddress, int grade) {
+    public Accommodation(int accommodationCode, String accommodationName, int accommodationPrice, int eventPrice, int discountRate, String accommodationAddress, double grade) {
         this.accommodationCode = accommodationCode;
         this.accommodationName = accommodationName;
         this.accommodationPrice = accommodationPrice;
@@ -57,7 +57,7 @@ public class Accommodation {
         return accommodationAddress;
     }
 
-    public int getGrade() {
+    public double getGrade() {
         return grade;
     }
 

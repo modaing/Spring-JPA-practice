@@ -14,6 +14,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ReservationService {
 
@@ -50,5 +53,28 @@ public class ReservationService {
 
     public void reservation(ReservationDTO reservationDTO) {
         reservationRepository.save(modelMapper.map(reservationDTO,Reservation.class));
+    }
+
+    public List<AccommodationDTO> selectAllAccommodationList() {
+        List<Accommodation> accommodationList = accommodationRepository.findAllAccommodation();
+
+        return accommodationList.stream()
+                .map(accommodation -> modelMapper.map(accommodation, AccommodationDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public void modifyReservation(ReservationDTO reservationDTO) {
+        Reservation reservation = reservationRepository.findById(reservationDTO.getReservationCode()).orElseThrow();
+
+        reservation = reservation.reservationDate(reservationDTO.getReservationDate()).builder();
+        reservationRepository.save(reservation);
+    }
+
+    public ReservationDTO selectReservationByCode(int reservationCode) {
+
+        System.out.println(reservationCode);
+        Reservation myReservation = reservationRepository.findById(reservationCode).orElseThrow(IllegalArgumentException::new);
+
+        return modelMapper.map(myReservation, ReservationDTO.class);
     }
 }

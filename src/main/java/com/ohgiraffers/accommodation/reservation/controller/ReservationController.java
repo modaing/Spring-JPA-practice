@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/accommodation")
@@ -40,24 +42,37 @@ public class ReservationController {
         return "accommodation/list";
     }
 
-    @GetMapping("/{accommodationCode}")
-    public String selectAccommodation(@PathVariable int accommodationCode, Model model) {
+//    @GetMapping("/{accommodationCode}")
+//    public String selectAccommodation(@PathVariable int accommodationCode, Model model) {
+//
+//        AccommodationDTO eventAccommodation = reservationService.selectAccommodationByCode(accommodationCode);
+//
+//        model.addAttribute("eventAccommodation", eventAccommodation);
+//
+//        return "accommodation/event";
+//    }
 
-        AccommodationDTO eventAccommodation = reservationService.selectAccommodationByCode(accommodationCode);
+    @GetMapping("/reservation/{reservationCode}")
+    public String selectReservation(@PathVariable("reservationCode") int reservationCode, Model model) {
 
-        model.addAttribute("eventAccommodation", eventAccommodation);
+        System.out.println(reservationCode);
+        ReservationDTO reservation = reservationService.selectReservationByCode(reservationCode);
 
-        return "accommodation/event";
+        System.out.println(reservation);
+
+        model.addAttribute("reservation", reservation);
+
+        return "accommodation/details";
     }
 
     @GetMapping("/reservation")
     public void reservation() {
+    }
 
-//        AccommodationDTO reservation = reservationService.selectAccommodationByCode(accommodationCode);
-//
-//        model.addAttribute("reservation", reservation);
-//
-//        return "accommodation/reservation";
+    @GetMapping(value = "/name", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<AccommodationDTO> selectAccommodationList() {
+        return reservationService.selectAllAccommodationList();
     }
 
     @PostMapping("/reservation")
@@ -65,8 +80,19 @@ public class ReservationController {
 
         reservationService.reservation(reservationDTO);
 
-        return "redirect:/accommodation/details";
+        return "redirect:/main";
     }
+
+    @GetMapping("/modify")
+    public void modifyAccommodation() {}
+
+    @PostMapping("/modify")
+    public String modifyReservation(ReservationDTO reservationDTO) {
+        reservationService.modifyReservation(reservationDTO);
+        return "redirect:/main";
+    }
+
+
 
 
 }

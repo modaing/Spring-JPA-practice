@@ -6,8 +6,24 @@
 </head>
 <body>
 <h1>나의 예약 내역</h1>
-<div th:each="">
-
+    <table th:each="reservation : ${reservation}">
+        <tr>
+            <th>예약 코드</th>
+            <th>예약자명</th>
+            <th>휴대폰 번호</th>
+            <th>예약 인원</th>
+            <th>예약 날짜</th>
+            <th>숙소명</th>
+        </tr>
+        <tr>
+            <td th:text="${reservation.reservationCode}"></td>
+            <td th:text="${reservation.clientName}"></td>
+            <td th:text="${reservation.phone}"></td>
+            <td th:text="${reservation.numberOfPerson}"></td>
+            <td th:text="${reservation.reservationDate}"></td>
+            <td th:text="${reservation.accommodationName}"></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

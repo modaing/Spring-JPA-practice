@@ -8,18 +8,28 @@
 <h1>숙소 예약</h1>
 
 <form action="/accommodation/reservation" method="post">
-    <th:block th:each="reservation : ${reservation}">
-        <label>숙소 이름 : </label><div th:text="reservation.accommodationName">숙소 이름</div><br>
-        <div th:text="reservation.accommodationPrice">숙소 원가</div>
-        <div th:text="reservation.eventPrice">이벤트가</div>
-        <div th:text="reservation.discountRate">할인율</div>
-        <div th:text="reservation.accommodationAddress">위치</div>
-    </th:block>
-    <label>예약자명 : </label><input type="text" name="clientName"/>
-    <label>연락처 : </label><input type="text" name="phone"/>
-    <label>예약 인원 : </label><input type="number" name="numberOfPerson"/>
-    <label>예약 날짜 : </label><input type="date" name="reservationDate"/>
+    <select name="accommodationCode" id="accommodationCode"></select><br>
+    <label>예약자명 : </label><input type="text" name="clientName"/><br>
+    <label>연락처 : </label><input type="text" name="phone"/><br>
+    <label>예약 인원 : </label><input type="number" name="numberOfPerson"/><br>
+    <label>예약 날짜 : </label><input type="date" name="reservationDate"/><br>
     <input type="submit" value="예약"/>
 </form>
+
+<script>
+    fetch('/accommodation/name')
+    .then(res => res.json())
+    .then(data => {
+        const $accommodationCode = document.getElementById('accommodationCode');
+
+        for(let index in data) {
+            const $accommodation = document.createElement('accommodation');
+            $accommodation.value = data[index].accommodationCode;
+            $accommodation.textContent = data[index].accommodationName;
+
+            $accommodationCode.appendChild($accommodation);
+        }
+    });
+</script>
 </body>
 </html>

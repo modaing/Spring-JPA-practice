@@ -30,6 +30,15 @@ public class Reservation {
     @Column(name = "reservation_date")
     private Date reservationDate;
 
+    public Reservation reservationDate(Date val) {
+        this.reservationDate = val;
+        return this;
+    }
+
+    public Reservation builder() {
+        return new Reservation(reservationCode, clientName, phone, numberOfPerson, accommodationCode, reservationDate);
+    }
+
     protected Reservation() {}
 
     public Reservation(int reservationCode, String clientName, String phone, int numberOfPerson, int accommodationCode, Date reservationDate) {

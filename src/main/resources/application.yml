@@ -8,8 +8,8 @@ spring:
   jpa:
     show-sql: true
     database: mysql
-    hibernate:
-      ddl-auto: create
+#    hibernate:
+#      ddl-auto: create
     generate-ddl: false
     properties:
       hibernate:

@@ -7,17 +7,18 @@
 <body>
 <table>
     <tr>
+        <th>숙소 코드</th>
         <th>숙소 이름</th>
         <th>숙소 가격</th>
         <th>숙소 위치</th>
         <th>숙소 평점</th>
     </tr>
     <tr th:each="accom : ${accommodations}">
+        <th th:text="${accom.accommodationCode}"></th>
         <th th:text="${accom.accommodationName}"></th>
         <th th:text="${accom.accommodationPrice}"></th>
         <th th:text="${accom.accommodationAddress}"></th>
         <th th:text="${accom.grade}"></th>
-        <button onclick="location.href=`/accommodation/reservation`">예약</button><!--등록-->
     </tr>
 </table>
 
