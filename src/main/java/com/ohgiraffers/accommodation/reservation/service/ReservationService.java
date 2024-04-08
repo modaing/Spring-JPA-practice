@@ -73,8 +73,9 @@ public class ReservationService {
     public ReservationDTO selectReservationByCode(int reservationCode) {
 
         System.out.println(reservationCode);
-        Reservation myReservation = reservationRepository.findById(reservationCode).orElseThrow(IllegalArgumentException::new);
+        Reservation myReservation = reservationRepository.findMyReservation(reservationCode);
 
+        System.out.println(myReservation);
         return modelMapper.map(myReservation, ReservationDTO.class);
     }
 }

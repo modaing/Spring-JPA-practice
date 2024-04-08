@@ -13,7 +13,7 @@
             <th>휴대폰 번호</th>
             <th>예약 인원</th>
             <th>예약 날짜</th>
-            <th>숙소명</th>
+            <th>예약 숙소 코드</th>
         </tr>
         <tr>
             <td th:text="${reservation.reservationCode}"></td>
@@ -21,7 +21,7 @@
             <td th:text="${reservation.phone}"></td>
             <td th:text="${reservation.numberOfPerson}"></td>
             <td th:text="${reservation.reservationDate}"></td>
-            <td th:text="${reservation.accommodationName}"></td>
+            <td th:text="${reservation.accommodationCode}"></td>
         </tr>
     </table>
 </div>

@@ -42,16 +42,6 @@ public class ReservationController {
         return "accommodation/list";
     }
 
-//    @GetMapping("/{accommodationCode}")
-//    public String selectAccommodation(@PathVariable int accommodationCode, Model model) {
-//
-//        AccommodationDTO eventAccommodation = reservationService.selectAccommodationByCode(accommodationCode);
-//
-//        model.addAttribute("eventAccommodation", eventAccommodation);
-//
-//        return "accommodation/event";
-//    }
-
     @GetMapping("/reservation/{reservationCode}")
     public String selectReservation(@PathVariable("reservationCode") int reservationCode, Model model) {
 
