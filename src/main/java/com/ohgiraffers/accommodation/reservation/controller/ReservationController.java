@@ -82,6 +82,15 @@ public class ReservationController {
         return "redirect:/main";
     }
 
+    @GetMapping("/delete")
+    public void deleteAccommodation() {}
+
+    @PostMapping("/delete")
+    public String deleteReservation(@RequestParam Integer reservationCode) {
+        reservationService.deleteReservation(reservationCode);
+        return "redirect:/main";
+    }
+
 
 
 

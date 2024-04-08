@@ -13,4 +13,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
             nativeQuery = true
     )
     Reservation findMyReservation(@Param("reservation_code") int reservationCode);
+
+    void deleteById(Integer reservationCode);
 }

@@ -78,4 +78,8 @@ public class ReservationService {
         System.out.println(myReservation);
         return modelMapper.map(myReservation, ReservationDTO.class);
     }
+
+    public void deleteReservation(Integer reservationCode) {
+        reservationRepository.deleteById(reservationCode);
+    }
 }
