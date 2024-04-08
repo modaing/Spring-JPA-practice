@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reservation</title>
+</head>
+<body>
+<h1>숙소 예약</h1>
+
+<form action="/accommodation/reservation" method="post">
+    <th:block th:each="reservation : ${reservation}">
+        <label>숙소 이름 : </label><div th:text="reservation.accommodationName">숙소 이름</div><br>
+        <div th:text="reservation.accommodationPrice">숙소 원가</div>
+        <div th:text="reservation.eventPrice">이벤트가</div>
+        <div th:text="reservation.discountRate">할인율</div>
+        <div th:text="reservation.accommodationAddress">위치</div>
+    </th:block>
+    <label>예약자명 : </label><input type="text" name="clientName"/>
+    <label>연락처 : </label><input type="text" name="phone"/>
+    <label>예약 인원 : </label><input type="number" name="numberOfPerson"/>
+    <label>예약 날짜 : </label><input type="date" name="reservationDate"/>
+    <input type="submit" value="예약"/>
+</form>
+</body>
+</html>
